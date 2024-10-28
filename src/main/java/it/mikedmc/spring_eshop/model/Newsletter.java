@@ -5,6 +5,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+/***
+ * Entità per la gestione degli utenti che hanno voluto iscriversi alla Newsletter del sito.
+ */
 @Entity
 public class Newsletter {
 
