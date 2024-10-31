@@ -1,9 +1,8 @@
 package it.mikedmc.spring_eshop.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.time.LocalDate;
 
 /***
  * Entità per la gestione degli utenti che hanno voluto iscriversi alla Newsletter del sito.
@@ -27,6 +26,9 @@ public class Newsletter {
 
     private String email;
 
+    @Column(name = "date_created")
+    private LocalDate dateCreated = LocalDate.now();
+
     public double getId() {
         return id;
     }
@@ -49,5 +51,9 @@ public class Newsletter {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public LocalDate getDateCreated() {
+        return dateCreated;
     }
 }

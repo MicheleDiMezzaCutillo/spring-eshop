@@ -14,14 +14,14 @@ public class NewsletterDto {
         this.email = email;
     }
 
-    @NotNull(message = "Nome mancante.")
-    @NotEmpty(message = "Nome mancante.")
-    @NotBlank(message = "Nome non valido.")
+    @NotNull(message = "Nome mancante")
+    @NotEmpty(message = "Nome mancante")
+    @NotBlank(message = "Nome non valido")
     private String name;
 
-    @NotNull(message = "Email mancante.")
-    @NotEmpty(message = "Email mancante.")
-    @NotBlank(message = "Email non valida.")
+    @NotNull(message = "Email mancante")
+    @NotEmpty(message = "Email mancante")
+    @NotBlank(message = "Email non valida")
     private String email;
 
     public String getName() {
