@@ -15,4 +15,7 @@ public class NewsletterService {
         return newsletterRepository.save(newsletter);
     }
 
+    public Newsletter findByEmail(String email) {
+        return newsletterRepository.findByEmail(email);
+    }
 }

@@ -34,6 +34,11 @@ public class NewsletterRestController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
         }
 
+        if (newsletterService.findByEmail(newsletterDto.getEmail()) != null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("L'email è già registrata.");
+        }
+
+
         newsletterService.save(NewsletterDtoBuilder.fromDtoToEntity(newsletterDto));
         return ResponseEntity.ok("Successo");
     }
