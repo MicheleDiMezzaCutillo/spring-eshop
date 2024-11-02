@@ -1,6 +1,7 @@
 package it.mikedmc.spring_eshop.rest;
 
 import it.mikedmc.spring_eshop.model.Product;
+import it.mikedmc.spring_eshop.model.SelectedProduct;
 import it.mikedmc.spring_eshop.service.ProductService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class CartRestController {
      */
     @GetMapping("/size")
     public ResponseEntity<Integer> size(HttpSession session) {
-        List<Product> userCart = (List<Product>) session.getAttribute("userCart");
+        List<SelectedProduct> userCart = (List<SelectedProduct>) session.getAttribute("userCart");
 
         int size = 0;
         if (userCart != null) {
