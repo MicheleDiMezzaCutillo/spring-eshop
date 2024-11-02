@@ -177,8 +177,8 @@
         <div class="row px-xl-5">
             <div class="col-lg-7 mb-5">
                 <div class="contact-form">
-                    <div id="success"></div>
-                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                    <div id="allert"></div>
+                    <form id="contactForm">
                         <div class="control-group">
                             <input type="text" class="form-control" id="name" placeholder="Your Name"
                                 required="required" data-validation-required-message="Please enter your name" />
@@ -266,18 +266,19 @@
                     </div>
                     <div class="col-md-4 mb-5">
                         <h5 class="font-weight-bold text-dark mb-4">Newsletter</h5>
-                        <form action="">
+                        <form id="newsletterForm2">
                             <div class="form-group">
-                                <input type="text" class="form-control border-0 py-4" placeholder="Your Name" required="required" />
+                                <input type="text" id="name2" class="form-control border-0 py-4" placeholder="Your Name" required="required" />
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control border-0 py-4" placeholder="Your Email"
+                                <input type="email" id="email2" class="form-control border-0 py-4" placeholder="Your Email"
                                     required="required" />
                             </div>
                             <div>
                                 <button class="btn btn-primary btn-block border-0 py-3" type="submit">Subscribe Now</button>
                             </div>
                         </form>
+                        <div ></div>
                     </div>
                 </div>
             </div>
@@ -315,6 +316,52 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+
+    <!-- Newsletter Javascript -->
+    <script src="js/newsletter.js"></script>
+
+    <!-- Invio del form per contattare l'azienda -->
+    <script>
+        // Gestione del form della newsletter
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Impedisce l'invio del form tradizionale
+
+        // Raccoglie i dati dal form
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const subject = document.getElementById("subject").value;
+        const message = document.getElementById("message").value;
+
+
+        // Prepara i dati per la richiesta
+        const data = {
+            name: name,
+            email: email,
+            subject: subject,
+            message: message
+        };
+
+        // Fa la richiesta POST all'endpoint del controller
+        fetch("/api/contact/message", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.text().then(text => {
+                if (response.ok) {
+                    document.getElementById("allert").innerHTML = `<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><strong>${text}</strong></div>`;
+                } else {
+                    document.getElementById("allert").innerHTML = `<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><strong>${text}</strong></div>`;
+                }
+            }))
+            .catch(error => {
+                document.getElementById("allert").innerHTML = `<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><strong>${error.message}</strong></div>`;
+            });
+        });
+    </script>
 </body>
 
 </html>
