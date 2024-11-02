@@ -22,13 +22,13 @@ document.getElementById("newsletterForm").addEventListener("submit", function(ev
         })
         .then(response => response.text().then(text => {
             if (response.ok) {
-                document.getElementById("message").innerHTML = `<p style="color: green;">${text}</p>`;
+                document.getElementById("message").innerHTML = `<div class="alert alert-success mt-3"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><strong>${text}</strong></div>`;
             } else {
-                document.getElementById("message").innerHTML = `<p style="color: red;">${text}</p>`;
+                document.getElementById("message").innerHTML = `<div class="alert alert-danger mt-3"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><strong>${text}</strong></div>`;
             }
         }))
         .catch(error => {
-            document.getElementById("message").innerHTML = `<p style="color: red;">Errore durante l'invio dei dati: ${error.message}</p>`;
+            document.getElementById("message").innerHTML = `<div class="alert alert-danger mt-3"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><strong>${error.message}</strong></div>`;
         });
 });
 
@@ -56,12 +56,13 @@ document.getElementById("newsletterForm2").addEventListener("submit", function(e
         })
         .then(response => response.text().then(text => {
             if (response.ok) {
-                document.getElementById("message2").innerHTML = `<p style="color: green;">${text}</p>`;
+                document.getElementById("message2").innerHTML = `<div class="alert alert-success mt-3"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><strong>${text}</strong></div>`;
+
             } else {
-                document.getElementById("message2").innerHTML = `<p style="color: red;">${text}</p>`;
+                document.getElementById("message2").innerHTML = `<div class="alert alert-danger mt-3"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><strong>${text}</strong></div>`;
             }
         }))
         .catch(error => {
-            document.getElementById("message2").innerHTML = `<p style="color: red;">Errore durante l'invio dei dati: ${error.message}</p>`;
+            document.getElementById("message2").innerHTML = `<div class="alert alert-danger mt-3"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><strong>${error.message}</strong></div>`;
         });
 });
