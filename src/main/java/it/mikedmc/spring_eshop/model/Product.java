@@ -12,7 +12,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private double id;
+    private int id;
 
     private String name;
     private String description;
@@ -41,11 +41,11 @@ public class Product {
     private List<ProductImage> images;
 
 
-    public double getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(double id) {
+    public void setId(int id) {
         this.id = id;
     }
 
